@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SocialBox from "../components/SocialBox.astro";
+import Music from "../components/Music.astro";
+import Count from "../components/Count.astro";
+import Bg from "../components/Bg.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<Layout title="grece">
+  <div id="bg-Overlay" class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-[#0f0f0f]">
+    <Bg />
+  </div>
+  <div>
+    <Nav />
+  </div>
+  <div class="fixed top-0 left-0 w-full h-full -z-20 overflow-hidden pointer-events-none">
+    <div
+      id="player"
+      class="absolute top-1/2 left-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.2] select-none"
+    >
+    </div>
+  </div>
+  <div class="fixed top-0 left-0 w-full h-full -z-10 bg-black/60 backdrop-blur-[2px]"></div>
+  <main class="flex flex-col items-center justify-center h-screen gap-6">
+    <div class="flex translate-y-8 -translate-x-8"><Count /></div>
+    <SocialBox />
+    <div class="relative w-full max-w-2xl flex justify-center md:top-35 top-20">
+      <Music />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Cover  adaptable del video */
+  @media (min-aspect-ratio: 16/9) {
+    #player {
+      height: 56.25vw;
+    }
+  }
+
+  @media (max-aspect-ratio: 16/9) {
+    #player {
+      width: 177.78vh;
+    }
+  }
+</style>

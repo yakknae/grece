@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* 1. Peso Regular (400) */
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Peso Fino (300) */
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 3. Peso Bold (700) */
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  cursor:
+    url("/assets/cursorWhite.png") 16 16,
+    auto !important;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.icon,
+.btn,
+.nav-icon,
+.name,
+.container-clan {
+  cursor:
+    url("/assets/cursorWhite.png") 16 16,
+    auto !important;
+  font-family: "Poppins", sans-serif;
+}
+
+/* C L A N */
+@layer components {
+  /* Aplicar cursor a todo lo interactivo en el clan */
+  .container-clan,
+  .container-clan a,
+  .sub-container-clan {
+    cursor:
+      url("/assets/cursorWhite.png") 16 16,
+      auto !important;
+  }
+
+  /* Personalización del scrollbar (Sigue siendo mejor en CSS puro) */
+  .sub-container-clan::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .sub-container-clan::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sub-container-clan::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+    clip-path: inset(10px 0 10px 0);
+  }
+
+  .sub-container-clan::-webkit-scrollbar-thumb:hover {
+    background: rgba(170, 169, 169, 0.9);
+  }
+}

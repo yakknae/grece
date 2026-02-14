@@ -1,0 +1,30 @@
+---
+// src/components/ui/Nav.astro
+const {
+  icon1 = "bi-incognito",
+  link1 = "/clan",
+  icon2 = "bi-emoji-dizzy",
+  link2 = "http://youtube.com/logout",
+  showSecond = true,
+} = Astro.props;
+---
+
+<nav class="fixed flex top-0 left-0 w-full justify-end pt-8 md:pr-16 pr-4 z-30 bg-transparent">
+  <ul class="list-none flex md:gap-8 gap-4 m-0 p-0 select-none">
+    <li>
+      <a href={link1} draggable="false">
+        <i class={`nav-icon bi ${icon1} text-white text-[36px] hover:text-pink-500 duration-300`}></i>
+      </a>
+    </li>
+
+    {
+      showSecond && (
+        <li>
+          <a href={link2} draggable="false">
+            <i class={`nav-icon bi ${icon2} text-white text-[34px] hover:text-pink-500 duration-300`} />
+          </a>
+        </li>
+      )
+    }
+  </ul>
+</nav>

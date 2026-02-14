@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/ClanLayout.astro";
+import List from "../components/clan/List.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<Layout title="clan">
+  <div class="relative z-52 flex">
+    <Nav icon1="bi-house" link1="/" showSecond={false} />
+  </div>
+  <main class="relative z-50 flex flex-col items-center justify-center h-screen">
+    <List />
+  </main>
+
+  <div class="fixed inset-0 w-screen h-screen overflow-hidden z-0">
+    <div
+      id="player"
+      class="absolute top-1/2 left-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.2] select-none z-10"
+    >
+    </div>
+
+    <div class="absolute inset-0 z-20 bg-transparent" oncontextmenu="return false;"></div>
+  </div>
+</Layout>
