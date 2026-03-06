@@ -6,9 +6,9 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Lista de IDs de videos
 const VIDEO_IDS = [
-  "uXCtOk5dedI", // Fronteamos Porque Podemos
-  "ZwrRWZyHJhM", // $not seven corps
-  "HXCKChFzKxo", // NO SON KLLE
+  "5URefVYaJrA", // tailor
+  "StwmlDe6vE4", // century
+  "TF9GxcfJOsk", // haarper
   "8WPH2hRWrGY", // tony montana
 ];
 /*

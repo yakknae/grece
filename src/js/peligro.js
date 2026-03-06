@@ -41,12 +41,9 @@ async function obtenerVisitas() {
   const counterSlug = "gris"; // slug
 
   try {
-    const response = await fetch(
-      `https://api.counterapi.dev/v1/${workspaceSlug}/${counterSlug}/up`,
-      {
-        method: "GET",
-      },
-    );
+    const response = await fetch(`https://api.counterapi.dev/v1/${workspaceSlug}/${counterSlug}/up`, {
+      method: "GET",
+    });
 
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
@@ -101,3 +98,32 @@ function animacion() {
   actualizar();
 }
 animacion();
+
+(function () {
+  "use strict";
+  const proteccion = function () {
+    try {
+      (function () {
+        return function (i) {
+          console.clear();
+          (function () {}).constructor("debugger")();
+        };
+      })()(0);
+    } catch (e) {
+      setTimeout(proteccion, 50);
+    }
+  };
+
+  setInterval(function () {
+    proteccion();
+  }, 100);
+
+  (function a() {
+    const inicio = performance.now();
+    debugger;
+    if (performance.now() - inicio > 100) {
+      console.clear();
+    }
+    setTimeout(a, 100);
+  })();
+})();

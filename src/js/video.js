@@ -4,14 +4,24 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-const VIDEO_ID = ["StwmlDe6vE4"];
+const video_data = {
+  tag: "mOC5M0ssrMw",
+  start: 32,
+};
+
+window.onPlayerStateChange = function (event) {
+  if (event.data === YT.PlayerState.ENDED) {
+    window.player.seekTo(video_data.start);
+    window.player.playVideo();
+  }
+};
 
 // FORZAR A GLOBAL: Esto es lo que falta
 window.onYouTubeIframeAPIReady = function () {
   window.player = new YT.Player("player", {
     height: "100%",
     width: "100%",
-    videoId: VIDEO_ID,
+    videoId: video_data.tag,
     playerVars: {
       autoplay: 0,
       controls: 0,
@@ -22,20 +32,15 @@ window.onYouTubeIframeAPIReady = function () {
       modestbranding: 1,
       playsinline: 1,
       mute: 0,
+      start: video_data.start,
     },
     events: {
       onReady: (e) => {
-        e.target.setVolume(60);
+        e.target.setVolume(70);
       },
       onStateChange: window.onPlayerStateChange,
     },
   });
-};
-
-window.onPlayerStateChange = function (event) {
-  if (event.data === YT.PlayerState.ENDED) {
-    window.player.playVideo();
-  }
 };
 
 function formatTime(seconds) {
@@ -68,12 +73,51 @@ function startMusicSync() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const btnPause = document.getElementById("pause");
+  const iconPause = document.getElementById("icon-pause");
+  const iconPlay = document.getElementById("icon-play");
+
+  const btnVolume = document.getElementById("volume");
+  const iconVolumeOff = document.getElementById("icon-volumeOff");
+  const iconVolumeOn = document.getElementById("icon-volumeOn");
+
+  if (btnPause && iconPause && iconPlay) {
+    btnPause.addEventListener("click", () => {
+      const isPlaying = window.player.getPlayerState() === YT.PlayerState.PLAYING;
+
+      if (isPlaying) {
+        window.player.pauseVideo();
+        iconPause.classList.add("hidden");
+        iconPlay.classList.remove("hidden");
+      } else {
+        window.player.playVideo();
+        iconPause.classList.remove("hidden");
+        iconPlay.classList.add("hidden");
+      }
+    });
+  }
+
+  if (btnVolume && iconVolumeOff && iconVolumeOn) {
+    btnVolume.addEventListener("click", () => {
+      if (window.player.isMuted()) {
+        window.player.unMute();
+        iconVolumeOff.classList.add("hidden");
+        iconVolumeOn.classList.remove("hidden");
+      } else {
+        window.player.mute();
+        iconVolumeOff.classList.remove("hidden");
+        iconVolumeOn.classList.add("hidden");
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("bg-Btn");
   const overlay = document.getElementById("bg-Overlay");
   if (btn) {
     btn.addEventListener("click", () => {
-      const isReady =
-        window.player && typeof window.player.unMute === "function";
+      const isReady = window.player && typeof window.player.unMute === "function";
       if (isReady) {
         overlay.style.display = "none";
         window.player.unMute();

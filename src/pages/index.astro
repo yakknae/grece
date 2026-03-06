@@ -21,8 +21,15 @@ import Nav from "../components/Nav.astro";
     >
     </div>
   </div>
-  <div class="fixed top-0 left-0 w-full h-full -z-10 bg-black/60 backdrop-blur-[2px]"></div>
-  <main class="flex flex-col items-center justify-center h-screen gap-6">
+  <!-- // visuales marrones - no aplica por el .dot
+  <div class="fixed top-0 left-0 w-full h-full -z-10 bg-[#4b3621]/30 mix-blend-multiply"></div>
+
+  <div class="fixed top-0 left-0 w-full h-full -z-10 bg-orange-900/10 mix-blend-soft-light"></div>
+   -->
+  <main
+    style="background-image: url('/assets/dot.png');"
+    class="flex flex-col items-center justify-center h-screen gap-6"
+  >
     <div class="flex translate-y-8 -translate-x-8"><Count /></div>
     <SocialBox />
     <div class="relative w-full max-w-2xl flex justify-center md:top-35 top-20">
